@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" role="img" aria-labelledby="title description">
+  <title id="title">MLflow workflow: from training run to API prediction</title>
+  <desc id="description">A notebook trains and logs a model to MLflow Tracking, which stores experiment data and artifacts. The model is registered with the production alias, then FastAPI loads it to return ride-duration predictions.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#546b63" />
+    </marker>
+    <style>
+      .title { font: 700 27px Georgia, serif; fill: #203334; }
+      .stage { font: 700 19px Arial, sans-serif; fill: #203334; }
+      .label { font: 600 15px Arial, sans-serif; fill: #203334; }
+      .body { font: 15px Arial, sans-serif; fill: #43534d; }
+      .small { font: 13px Arial, sans-serif; fill: #586760; }
+      .arrow-label { font: 12px Arial, sans-serif; fill: #586760; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="470" rx="8" fill="#f2f7f4" />
+  <text x="40" y="54" class="title">MLflow: from experiment to prediction</text>
+  <text x="40" y="82" class="body">Track a training run, register its model, and let the API retrieve the production version.</text>
+
+  <rect x="30" y="125" width="255" height="285" rx="8" fill="#ffffff" stroke="#8bb8af" stroke-width="2" />
+  <rect x="30" y="125" width="255" height="10" rx="5" fill="#167d78" />
+  <circle cx="58" cy="165" r="17" fill="#dcefeb" />
+  <text x="58" y="171" text-anchor="middle" class="label">1</text>
+  <text x="84" y="171" class="stage">Notebook</text>
+  <text x="52" y="214" class="label">Train the model</text>
+  <text x="52" y="247" class="body">Create features and fit</text>
+  <text x="52" y="270" class="body">the ride-duration model.</text>
+  <line x1="52" y1="291" x2="263" y2="291" stroke="#d5e3dd" />
+  <text x="52" y="321" class="small">Log parameters</text>
+  <text x="52" y="347" class="small">Log mae_minutes</text>
+  <text x="52" y="373" class="small">Log the model artifact</text>
+
+  <line x1="289" y1="267" x2="318" y2="267" stroke="#546b63" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="304" y="246" text-anchor="middle" class="arrow-label">log</text>
+
+  <rect x="326" y="125" width="255" height="285" rx="8" fill="#ffffff" stroke="#93a68a" stroke-width="2" />
+  <rect x="326" y="125" width="255" height="10" rx="5" fill="#718b4e" />
+  <circle cx="354" cy="165" r="17" fill="#edf1e5" />
+  <text x="354" y="171" text-anchor="middle" class="label">2</text>
+  <text x="380" y="171" class="stage">MLflow Tracking</text>
+  <text x="348" y="214" class="label">Local server :5000</text>
+  <text x="348" y="247" class="body">Experiment run records</text>
+  <text x="348" y="270" class="body">metrics and parameters.</text>
+  <line x1="348" y1="291" x2="559" y2="291" stroke="#d5e3dd" />
+  <text x="348" y="321" class="small">Metadata: mlflow.db</text>
+  <text x="348" y="347" class="small">Artifacts: mlartifacts/</text>
+  <text x="348" y="383" class="small">Experiment: local-taxi-duration-demo</text>
+
+  <line x1="585" y1="267" x2="614" y2="267" stroke="#546b63" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="600" y="246" text-anchor="middle" class="arrow-label">register</text>
+
+  <rect x="622" y="125" width="255" height="285" rx="8" fill="#ffffff" stroke="#d49a63" stroke-width="2" />
+  <rect x="622" y="125" width="255" height="10" rx="5" fill="#c67a3f" />
+  <circle cx="650" cy="165" r="17" fill="#f7e9dc" />
+  <text x="650" y="171" text-anchor="middle" class="label">3</text>
+  <text x="676" y="171" class="stage">Model Registry</text>
+  <text x="644" y="214" class="label">Registered model</text>
+  <text x="644" y="250" class="body">lr-ride-duration</text>
+  <line x1="644" y1="273" x2="855" y2="273" stroke="#e8ddd3" />
+  <text x="644" y="308" class="small">Version 1</text>
+  <rect x="644" y="328" width="190" height="42" rx="5" fill="#f7e9dc" />
+  <text x="659" y="355" class="label">alias: production</text>
+  <text x="644" y="391" class="small">A stable name for the API to load</text>
+
+  <line x1="881" y1="267" x2="910" y2="267" stroke="#546b63" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="896" y="246" text-anchor="middle" class="arrow-label">load</text>
+
+  <rect x="918" y="125" width="252" height="285" rx="8" fill="#ffffff" stroke="#7b9aa1" stroke-width="2" />
+  <rect x="918" y="125" width="252" height="10" rx="5" fill="#4c7881" />
+  <circle cx="946" cy="165" r="17" fill="#e1eef0" />
+  <text x="946" y="171" text-anchor="middle" class="label">4</text>
+  <text x="972" y="171" class="stage">FastAPI</text>
+  <text x="940" y="214" class="label">Local service :9696</text>
+  <rect x="940" y="238" width="205" height="43" rx="5" fill="#e1eef0" />
+  <text x="954" y="265" class="label">POST /predict</text>
+  <text x="940" y="316" class="body">Loads the production</text>
+  <text x="940" y="339" class="body">model for a ride request.</text>
+  <line x1="940" y1="358" x2="1146" y2="358" stroke="#d5e3dd" />
+  <text x="940" y="387" class="small">Returns predicted duration</text>
+</svg>
